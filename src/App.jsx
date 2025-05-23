@@ -1,35 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react"
+import Chats from "./sections/Chats"
+import Inbox from "./sections/Inbox"
+import Sidebar from "./sections/Sidebar"
+import { useGlobalContext } from "./context/GlobalContext"
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { sidebarVisible, toggleSidebar } = useGlobalContext()
+  const [popupVisible, setPopupVisible] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className=" theme bg-primary w-screen h-screen flex justify-center items-center">
+    <div className=" flex flex-row justify-between h-screen w-full max-w-[1450px] bg-background rounded-xl shadow-2xl">
+      <Inbox className={`w-full md:w-[15%] md:min-w-80`}/>
+      <Chats className=" hidden md:block"/>
+      
+      {sidebarVisible ? <Sidebar className=" hidden md:block"/> : null}
+    </div>
+    </div>
   )
 }
-
-export default App

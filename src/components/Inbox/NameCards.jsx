@@ -1,5 +1,6 @@
-import { useEffect } from "react"
 import { FaStar } from "react-icons/fa6";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { useEffect } from "react";
 
 const NameCards = ({ obj }) => {
   const {
@@ -11,13 +12,17 @@ const NameCards = ({ obj }) => {
     id,
     starred
   } = obj
+
+  const {
+    chatID ,setChatID
+  } = useGlobalContext()
+
   useEffect(() => {
-    console.log(obj)
-    console.log(unread)
-  }, [])
+    console.log(chatID)
+  }, [chatID])
 
   return (
-    <div className="flex flex-row px-3 gap-3 h-16 items-center rounded-lg hover:bg-slate-800/20 border-b-2">
+    <button className={`flex flex-row px-3 gap-3 h-16 items-center rounded-lg hover:bg-slate-800/20 border-b-2 ${id === chatID? ` bg-primary/60`:``}`} onClick={() => {setChatID(id)}}>
       <div className="bg-slate-500 rounded-[50%] w-8 h-7" />
       <div className="w-full">
         <h2 className={`text-base flex flex-row gap-1 items-center ${unread? ` font-bold` : ` font-normal`}`}>
@@ -43,7 +48,7 @@ const NameCards = ({ obj }) => {
           </p>
         </div>
       </div>
-    </div>
+    </button>
   )
 }
 

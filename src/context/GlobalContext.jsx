@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { fetchChatUsingID } from "../dummyData/chatData";
 
 const GlobalContext = createContext(null)
 
@@ -7,15 +8,21 @@ export const useGlobalContext = () => {
 } 
 
 export const GlobalContextProvider = ({children}) => {
-    const [sidebarVisible, setSidebarVisible] = useState(true)
-    const [chatID, setChatID] = useState(-1)
+    const [sidebarVisible, setSidebarVisible] = useState(false)
+    const [chatID, setChatID] = useState(null)
+    const [chatData, setChatData] = useState(fetchChatUsingID(chatID))
+
+    useEffect(() => {
+        setChatData(fetchChatUsingID(chatID))
+        if(chatID) setSidebarVisible(true)
+    }, [chatID])
 
     const toggleSidebar = () => {
         setSidebarVisible(x => !x)
     }
 
     return(
-        <GlobalContext.Provider value={{sidebarVisible, toggleSidebar, chatID, setChatID}}>
+        <GlobalContext.Provider value={{sidebarVisible, toggleSidebar, chatID, setChatID, chatData}}>
             {children}
         </GlobalContext.Provider>
     )

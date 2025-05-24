@@ -1,34 +1,83 @@
-const chatData = [
+const data = [
   {
-    name: "Name 1",
-    recent: "How have you been??",
-    company: "Github",
-    lastUpdate: "25m",
-    unread: true,
     id: "1",
-    type: "open",
-    starred: true,
+    name: "Name 1",
+    chats: [
+      {
+        type: "recieved",
+        msg: "I have a complaint!!",
+        time: Date.now() - 40 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Please Elaborate Further!?",
+        time: Date.now() - 39 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Hello??",
+        time: Date.now() - 10 * 60 * 1000,
+      },
+      {
+        type: "recieved",
+        msg: "Don't do that! Don't give me hope!! ",
+        time: Date.now() - 9 * 60 * 1000,
+      },
+    ],
   },
-  {
-    name: "Name 2",
-    recent: "How have you been maaa nigg??",
-    company: "Github",
-    lastUpdate: "45m",
-    unread: false,
+{
     id: "2",
-    type: "open",
-    starred: false,
+    name: "Name 2",
+    chats: [
+      {
+        type: "recieved",
+        msg: "I have a complaint!!",
+        time: Date.now() - 40 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Please Elaborate Further!?",
+        time: Date.now() - 39 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Hello??",
+        time: Date.now() - 10 * 60 * 1000,
+      },
+      {
+        type: "recieved",
+        msg: "Don't do that! Don't give me hope!! ",
+        time: Date.now() - 10 * 60 * 1000,
+      },
+    ],
   },
-  {
-    name: "Name 3",
-    recent: "How have you been maaa nigg??",
-    company: "Github",
-    lastUpdate: "45m",
-    unread: false,
+{
     id: "3",
-    type: "closed",
-    starred: true,
+    name: "Name 3",
+    chats: [
+      {
+        type: "recieved",
+        msg: "I have a complaint!!",
+        time: Date.now() - 40 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Please Elaborate Further!?",
+        time: Date.now() - 39 * 60 * 1000, // to show 40 minutes ago
+      },
+      {
+        type: "sent",
+        msg: "Hello??",
+        time: Date.now() - 10 * 60 * 1000,
+      },
+      {
+        type: "recieved",
+        msg: "Don't do that! Don't give me hope!! ",
+        time: Date.now() - 10 * 60 * 1000,
+      },
+    ],
   },
 ]
-
-export default chatData
+export const fetchChatUsingID = (id) => {
+  return data.find(obj => obj.id === id) || { err: "Invalid ID" };
+}

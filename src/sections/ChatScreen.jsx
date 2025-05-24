@@ -5,11 +5,11 @@ import Sidebar from "./Sidebar"
 // Implemented Chatscreen to prevent re-render of Inbox on Sidebar update 
 
 const ChatScreen = () => {
-  const { sidebarVisible, toggleSidebar } = useGlobalContext()
+  const {chatID, sidebarVisible, toggleSidebar } = useGlobalContext()
 
   return (
     <>
-      <Chats className=" hidden md:block" />
+      <Chats className={`${chatID? `block` :`hidden`} md:block h-screen flex-1 `} />
       {sidebarVisible ? <Sidebar className=" hidden md:block" /> : null}
     </>
   )

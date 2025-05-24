@@ -12,7 +12,7 @@ const Sidebar = ({ className }) => {
     <div
       className={`w-[425px] ${className} border-l-2 h-screen bg-secondary relative flex flex-col`}
     >
-      <div className="h-14 border-b-2 flex items-center shadow-md flex-row justify-between px-4 bg-background">
+      <div className="h-14 flex items-center shadow-md flex-row justify-between px-4 bg-background">
         <div className=" flex flex-row gap-2">
           <button
             className={`relative p-2 h-full font-semibold transition-colors duration-300 overflow-hidden ${

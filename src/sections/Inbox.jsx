@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import NameCards from "../components/Inbox/NameCards"
 import { SlArrowDown } from "react-icons/sl"
 import FilterDropdown from "../components/Inbox/FilterDropdown"
-import chatData from "../dummyData/chatData"
+import chatData from "../dummyData/inboxData"
 
 const Inbox = ({ className }) => {
   const [typeFilter, setTypeFilter] = useState("all")
@@ -30,7 +30,7 @@ const Inbox = ({ className }) => {
 
   return (
     <div className={` border-r-2 ${className}`}>
-      <div className="h-14 border-b-2 flex items-center pl-6 shadow-md">
+      <div className="h-14 flex items-center pl-6 shadow-md">
         <h1 className=" text-2xl font-sans font-bold text-button">
           Your Inbox
         </h1>

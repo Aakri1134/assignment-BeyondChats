@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import NameCards from "../components/NameCards"
+import NameCards from "../components/Inbox/NameCards"
 import { SlArrowDown } from "react-icons/sl"
-import FilterDropdown from "../components/FilterDropdown"
-import chatData from "../dummy data/chatData"
+import FilterDropdown from "../components/Inbox/FilterDropdown"
+import chatData from "../dummyData/chatData"
 
 const Inbox = ({ className }) => {
   const [typeFilter, setTypeFilter] = useState("all")
@@ -16,7 +16,12 @@ const Inbox = ({ className }) => {
       data.map((obj) => {
         setNum((x) => x + 1)
       })
-    } else {
+    }else if(typeFilter === "starred"){
+      data.map((obj) => {
+        if(obj.starred) setNum(x => x+1)
+      })
+    } 
+    else {
       data.map((obj) => {
         if(obj.type === typeFilter) setNum((x) => x + 1)
       })

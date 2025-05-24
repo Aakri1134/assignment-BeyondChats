@@ -11,6 +11,7 @@ export const GlobalContextProvider = ({children}) => {
     const [sidebarVisible, setSidebarVisible] = useState(false)
     const [chatID, setChatID] = useState(null)
     const [chatData, setChatData] = useState(fetchChatUsingID(chatID))
+    const [AIInput, setAIInput] = useState()
 
     useEffect(() => {
         setChatData(fetchChatUsingID(chatID))
@@ -22,7 +23,7 @@ export const GlobalContextProvider = ({children}) => {
     }
 
     return(
-        <GlobalContext.Provider value={{sidebarVisible, toggleSidebar, chatID, setChatID, chatData}}>
+        <GlobalContext.Provider value={{sidebarVisible, toggleSidebar, chatID, setChatID, chatData, AIInput, setAIInput}}>
             {children}
         </GlobalContext.Provider>
     )
